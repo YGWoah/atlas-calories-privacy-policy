@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas Calories privacy policy</title>
+<style>
+body { font-family: system-ui, sans-serif; line-height: 1.5; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; color: #1b1b1f; }
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.15rem; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<h1>Atlas Calories privacy policy</h1>
+<p>Last updated: 2026-11-01</p>
+
+<p>This policy covers the Atlas Calories Android app (package <code>com.atlascalories.app</code>). It explains what the app stores on your device, what leaves your device and where it goes, and why each permission is requested. The app is distributed through Google Play.</p>
+
+<h2>In short</h2>
+<ul>
+<li>Your diary stays on your device. The app has no accounts and no analytics.</li>
+<li>The app's own network requests go only to the Open Food Facts food database, and only when you search for a food or look up a barcode. Google's ML Kit diagnostics are described in section 2.</li>
+<li>Backups and exports are files you save yourself. The app does not upload them.</li>
+</ul>
+
+<h2>1. What the app stores on your device</h2>
+<p>The app stores its data in its private storage on your device, not in shared folders. Most of it lives in one database file, <code>diary.db</code>. That file holds:</p>
+<ul>
+<li>your diary entries, water entries, custom foods, favorites, saved meals, recipes, meal slots, day overrides, daily target plans, exercise sessions, strength sets, and exercise adjustment preferences;</li>
+<li>your profile and goals: height, weight, age, sex, activity level, units, and calorie and macro goals;</li>
+<li>fasting sessions, meal plans, grocery checks, body measurements (weight and measurement values), diary notes, and streak records;</li>
+<li>Health Connect values you chose to import: steps, workouts, and weight;</li>
+<li>food search results from Open Food Facts (product names, nutrition, and source details), kept as a local cache.</li>
+</ul>
+<p>Progress photos you choose are copied into the app's private files folder, and their details are kept in the database. The fasting end alert keeps a small amount of state in the app's private preferences.</p>
+<p>The app does not keep the meal photo you use for food labels, and it does not save barcode camera images.</p>
+<p>The app does not remove cached Open Food Facts results on its own. They stay on your device until you clear the app's data or uninstall the app.</p>
+
+<h2>2. What leaves your device, and to whom</h2>
+<ul>
+<li><strong>Open Food Facts food search (search.openfoodfacts.org).</strong> When you search for a food, the text you type is sent here, with paging values. The request also carries the app's user-agent: the app name, its version, and the project's GitHub address.</li>
+<li><strong>Open Food Facts barcode lookup (world.openfoodfacts.org).</strong> When you scan or type a barcode, the barcode is sent here, with the list of product fields the app asks for.</li>
+<li><strong>Google, through ML Kit.</strong> The ML Kit library used for meal photo labels runs on your device. It may send technical diagnostics to Google, as described in Google's ML Kit terms. The app adds no analytics of its own.</li>
+<li><strong>Shared grocery lists.</strong> If you share a grocery list, its text goes only to the app you choose.</li>
+</ul>
+<p>Open Food Facts can see your device's network address, as with any internet request. The app does not send your diary, profile, Health Connect data, photos, or account details over the network. Food and barcode data comes from Open Food Facts (openfoodfacts.org), under the licences shown in Settings &gt; Privacy &amp; about.</p>
+<p>Meal photo labels are recognized on your device. Voice logging uses the on-device speech recognizer that Android provides, not the general speech service. The app does not store the audio. If your device has no on-device recognizer, voice logging is shown as unavailable.</p>
+<p>Installing and updating the app happens through Google Play, which has its own privacy policy.</p>
+
+<h2>3. Permissions and what they are for</h2>
+<p>The app declares the permissions below. The first five are used by the app's own features. The next four are added by Google libraries and by WorkManager, the scheduling library behind reminders and the fasting alert. The last item is an internal permission that only apps signed with the same key can hold. This is the complete list of permissions in the app as built.</p>
+<ul>
+<li><strong>Internet.</strong> The app's own code uses it only for the Open Food Facts food search and barcode lookup described above. ML Kit and Google's Data Transport libraries also declare it, and ML Kit may use it to send the diagnostics described in section 2.</li>
+<li><strong>Camera.</strong> Asked only when you tap Scan barcode, and used only to read the barcode. The app does not save camera images. If you say no, type the barcode instead. The app does not require a camera.</li>
+<li><strong>Microphone.</strong> Asked only when you choose to speak in voice logging. If you say no, type the entry instead.</li>
+<li><strong>Notifications.</strong> Asked only when you turn on a reminder or the fasting end alert. Without it, those alerts are not shown.</li>
+<li><strong>Health Connect: steps, workouts, and weight.</strong> Read only, and requested only for each feature you turn on. The app imports these values only when you tap Import. It never writes to Health Connect. The app works without them.</li>
+<li><strong>Network state.</strong> Added by WorkManager, by Google's Data Transport libraries and by ML Kit, so they can check whether the device is online. The app's own code never checks network state.</li>
+<li><strong>Keep the device awake.</strong> Added by WorkManager, which can hold a wake lock while a scheduled reminder or fasting alert runs. The app's own code never takes a wake lock.</li>
+<li><strong>Run after a restart.</strong> Added by WorkManager, so scheduled reminders and the fasting alert are set up again after the phone restarts.</li>
+<li><strong>Foreground work.</strong> Added by WorkManager, for scheduled work that the system has to keep running in the foreground. The app's own code never starts a foreground service.</li>
+<li><strong>Internal app permission.</strong> AndroidX adds a permission named after the app to protect the app's own broadcast receivers. It has the signature protection level, so only apps signed with the same key can hold it. You are not asked for it.</li>
+</ul>
+<p>The app does not request location, contacts, storage, background health access, or the advertising ID. Meal and progress photos are chosen with the Android photo picker, which needs no storage permission.</p>
+
+<h2>4. Backups and exports</h2>
+<ul>
+<li><strong>Backup file.</strong> You choose where to save a backup. The file is plain JSON, and the app does not encrypt it. It contains sensitive health information, so keep it private. It holds your diary entries, water entries, settings and profile, meal slots, custom foods, favorites, saved meals and their items, recipes and their ingredients, daily target plans, day overrides, exercise sessions, strength sets, and exercise adjustment preferences. It does not include Health Connect imports, body measurements, fasting sessions, meal plans, grocery checks, diary notes, progress photos, or cached food search results.</li>
+<li><strong>Restore.</strong> You choose a backup file to restore. The app refuses the restore if any backed-up data already exists, so it never overwrites your data.</li>
+<li><strong>Database recovery export.</strong> If the database cannot be opened, the app can save a zip of the raw database files to a place you choose. That file contains everything in the database.</li>
+</ul>
+<p>The app does not upload backup or export files. Android cloud backup and device-to-device transfer do not include the app's data.</p>
+
+<h2>5. Accounts, analytics, and advertising</h2>
+<p>The app has no sign-in and no accounts. It includes no advertising SDK and no analytics or crash-reporting SDK, and its own declared dependencies include none. ML Kit depends on Google libraries, as described in section 2.</p>
+
+<h2>6. How long data is kept</h2>
+<p>Your diary and other records stay on your device until you delete them in the app. Cached Open Food Facts results stay until you clear the app's data. Uninstalling the app removes its private data.</p>
+
+<h2>7. Questions</h2>
+<p>Send privacy questions or requests by opening an issue on the GitHub issues page of the public policy repository: <a href="https://github.com/YGWoah/atlas-calories-privacy-policy/issues">https://github.com/YGWoah/atlas-calories-privacy-policy/issues</a>.</p>
+
+<h2>8. Changes</h2>
+<p>When this policy changes, the date at the top of this page changes too.</p>
+</body>
+</html>
